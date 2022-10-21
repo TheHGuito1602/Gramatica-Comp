@@ -4,6 +4,8 @@
  */
 package PALRE;
 
+import Tablas.Abecedario;
+
 /**
  *
  * @author Edgar Gutierrez
@@ -19,8 +21,11 @@ public class Gramatica {
         // TODO code application logic here
         String con="";
         String token="float x=0";
-        //tring tipo="int";
         
+        Abecedario a = new Abecedario();
+        a.minus();
+        //tring tipo="int";
+        /*
         for(int i = 0;i<token.length();i++){
             if(token.charAt(i)!=' '){
                 con=con+token.charAt(i);
@@ -40,7 +45,8 @@ public class Gramatica {
             }
            
             
-        }
+        }*/
+        
     }
     
 }
