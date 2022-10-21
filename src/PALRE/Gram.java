@@ -13,10 +13,14 @@ import java.util.LinkedList;
  */
 public class Gram {
     public static void main(String args[]){
-    ArrayList ad=new ArrayList();
-    ad.add("int");
-    ad.add("float");
-    
-        System.out.println(""+ad.get(1));
+    ArrayList PALRE=new ArrayList();
+    PALRE.add("int");
+    PALRE.add("float");
+        
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        
 }
 }
