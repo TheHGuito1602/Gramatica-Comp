@@ -62,8 +62,8 @@ public class Gramatica {
                         System.out.println("<declaracion>-> "+revisar+"<id><inicio_double>;");
                         break;
                     default:
-                        System.out.println("<declaracion>-> "+revisar);
-                        System.out.println("Error");
+                        System.out.println("<declaracion>->"+revisar);
+                        System.out.println(" Error");
                         break;
                 }
                 /*
