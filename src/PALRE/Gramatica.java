@@ -62,7 +62,7 @@ public class Gramatica {
                     System.out.println("<declaracion>-> "+revisar+"<id><inicio_char>;");                
 
                 }
-                
+                System.out.println("");
             }
             
             }
