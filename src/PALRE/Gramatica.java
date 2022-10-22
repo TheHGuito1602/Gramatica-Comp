@@ -6,6 +6,7 @@ package PALRE;
 
 import PALRES.Tabla1;
 import Tablas.Abecedario;
+import Tablas.Tabla;
 
 /**
  *
@@ -16,12 +17,13 @@ public class Gramatica {
     /**
      * @param args the command line arguments
      */
-    
+            Tabla t=new Tabla();
+
     //MANEJO DE SWITCH EN STRING
     public void inicio(){
         // TODO code application logic here
         String con="";
-        String token1="String x =0 ;";
+        String token1="char abaa=0 ;";
         //int/x/=0/; <- esta es la correcta
         System.out.println("Cadena recibida: "+token1);
         System.out.println("");
@@ -34,9 +36,13 @@ public class Gramatica {
             System.out.println(token[i]);   //Impresion para revisar las
         }                                   //posiciones del arreglo
         
-        
+        //tipo
+        //id
+        //inicializacion
+        //lista 
+        //;
         this.tipo(token[0]);
-        //this.id(token[1]); <- Propuesta
+        this.id(token[1]); //<- Propuesta
         
 
     }
@@ -62,7 +68,7 @@ public class Gramatica {
                         System.out.println("<declaracion>-> "+revisar+"<id><inicio_double>;");
                         break;
                     default:
-                        System.out.println("<declaracion>->"+revisar);
+                        System.out.println("<declaracion>->"+revisar+";");
                         System.out.println(" Error");
                         break;
                 }
@@ -98,9 +104,33 @@ public class Gramatica {
                 
                 return contador;
             }
+            /*
+            public void id(String revisar,String token){
+                //System.out.println("<declaracion>-> "+token+);
+                for(int i=1;i<revisar.length();i++){
+                    if(revisar.charAt(i)=='_'||revisar.charAt(i)=='l'){
+                      System.out.println("<declaracion>-> "+token+" "+revisar.charAt(i)+"<inicio_char> ;");
+                    }
+                }
+                
+            }
+            */
+            
+             public void id(String revisar){
+                //System.out.println("<declaracion>-> "+token+);
+                for(int i=0;i<revisar.length();i++){
+                    char c=revisar.charAt(i);
+                    if(!(c>='a' && c>='z')){
+                         System.out.println("<declaracion>-> "+c+"<inicio_double>;");
+                    }
+                    }
+                }
+                
+            }
+            
+            
               
-}
-          /*
+         /*
         if(con.compareTo(a.tipo())==0|con.compareTo("float")==0){
                     
                     System.out.println("tipo->"+con);
