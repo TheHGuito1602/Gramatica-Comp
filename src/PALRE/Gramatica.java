@@ -21,17 +21,20 @@ public class Gramatica {
     public void inicio(){
         // TODO code application logic here
         String con="";
-        String token="float x=0";
-        Gram a = new Gram();
-        String tipo="int";
+        String token="char x=0";
+        //int/x/=0/;
+        System.out.println("Cadena recibida: "+token);
+        System.out.println("");
+        System.out.println("<variable>-><declaracion>");
+  
         for(int i = 0;i<token.length();i++){
             if(token.charAt(i)!=' '){
                 con=con+token.charAt(i);
                 tipo(con);
             }
-           // System.out.println("Hola");
+           
         }
-                        
+        
 
     }
         
@@ -41,13 +44,23 @@ public class Gramatica {
                 String f="float";
                 String d="double";
                 String c="char";
+                
+                
                 if(i.compareTo(revisar)==0){
                     System.out.println("<tipo>-> "+revisar+"<id><inicio_int>;");
                     
                 }
                 if(f.compareTo(revisar)==0){
-                    System.out.println("<tipo>-> "+revisar+"<id><inicio_float>;");
+                    System.out.println("<declaracion>-> "+revisar+"<id><inicio_float>;");
                     
+                }
+                if(d.compareTo(revisar)==0){
+                    System.out.println("<declaracion>-> "+revisar+"<id><inicio_double>;");                
+                }
+                
+                if(c.compareTo(revisar)==0){
+                    System.out.println("<declaracion>-> "+revisar+"<id><inicio_char>;");                
+
                 }
                 
             }
