@@ -18,19 +18,43 @@ public class Gramatica {
      */
     
     //MANEJO DE SWITCH EN STRING
-    public static void main(String[] args) {
+    public void inicio(){
         // TODO code application logic here
         String con="";
         String token="float x=0";
-        
-        Tabla1 a = new Tabla1();
-        a.h();
-        //String tipo="int";
-        /*
+        Gram a = new Gram();
+        String tipo="int";
         for(int i = 0;i<token.length();i++){
             if(token.charAt(i)!=' '){
                 con=con+token.charAt(i);
-                if(con.compareTo("int")==0|con.compareTo("float")==0){
+                tipo(con);
+            }
+            
+        }
+                        
+
+    }
+        
+            
+            public void tipo(String revisar){
+                String i="int";
+                String f="float";
+                String d="double";
+                String c="char";
+                if(i.compareTo(revisar)==0){
+                    System.out.println("<tipo>-> "+revisar+"<id><inicio_int>;");
+                    
+                }
+                if(f.compareTo(revisar)==0){
+                    System.out.println("<tipo>-> "+revisar+"<id><inicio_float>;");
+                    
+                }
+                
+            }
+            
+            }
+          /*
+        if(con.compareTo(a.tipo())==0|con.compareTo("float")==0){
                     
                     System.out.println("tipo->"+con);
                     if(token.charAt(i)!=' '){
@@ -41,13 +65,11 @@ public class Gramatica {
                     }
                      
                 }
-            } else {
-                break;
-            }
-          */ 
-            
-        }
+        */
         
-    }
+            
+        
+        
+    
     
 

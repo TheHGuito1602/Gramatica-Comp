@@ -13,15 +13,8 @@ import java.util.LinkedList;
  */
 public class Gram {
     public static void main(String args[]){
-    ArrayList PALRE=new ArrayList();
-    PALRE.add("int");
-    PALRE.add("float");
-        
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("Hugo");
-        System.out.println("solo le di ctls s");
+        Gramatica a=new Gramatica();
+        a.inicio();
      
 }
 }
