@@ -29,7 +29,7 @@ public class Gramatica {
                 con=con+token.charAt(i);
                 tipo(con);
             }
-            
+           // System.out.println("Hola");
         }
                         
 
