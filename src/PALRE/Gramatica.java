@@ -4,6 +4,7 @@
  */
 package PALRE;
 
+import PALRES.Tabla1;
 import Tablas.Abecedario;
 
 /**
@@ -22,9 +23,9 @@ public class Gramatica {
         String con="";
         String token="float x=0";
         
-        Abecedario a = new Abecedario();
-        a.minus();
-        //tring tipo="int";
+        Tabla1 a = new Tabla1();
+        a.h();
+        //String tipo="int";
         /*
         for(int i = 0;i<token.length();i++){
             if(token.charAt(i)!=' '){
@@ -43,10 +44,10 @@ public class Gramatica {
             } else {
                 break;
             }
-           
+          */ 
             
-        }*/
+        }
         
     }
     
-}
+
