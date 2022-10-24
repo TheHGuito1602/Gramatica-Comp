@@ -24,7 +24,7 @@ public class Gramatica {
     public void inicio() {
         // TODO code application logic here
         String con = "";
-        String token1 = "char _xiu a ;";
+        String token1 = "float _xiu = 2.5a ;";
         //int/x/=0/; <- esta es la correcta
         System.out.println("Cadena recibida: " + token1);
         System.out.println("");
@@ -49,7 +49,8 @@ public class Gramatica {
         for(int i = 2; i<=token.length; i++){
             switch (token[i]){
                 case "=":
-                    //Prioridad
+                    this.asignar(token[0], token[i] ,token[i+1]);
+                    i++;
                 break;
                 case ",":
                     //Repetir
@@ -58,7 +59,7 @@ public class Gramatica {
                     this.puntoComa(token);
                 break;
                 default:
-                    System.out.println("Error");
+                    System.out.println("ErrorFinal");
                     System.exit(0);
                 break;
         }
@@ -174,6 +175,101 @@ public class Gramatica {
         }
         System.out.println("<declaracion> -> " + fin + ";");
         System.exit(0);
+    }
+    
+    public void asignar(String tipo, String asignacion,String valor){
+        switch (tipo){
+            case "int":
+                System.out.println("<declaracion> -> "+tipo+ " " +asignacion+"<lista_int>;");
+                this.crearEnteros(tipo, asignacion, valor);
+            break;
+            case "float":
+                System.out.println("<declaracion> -> "+tipo+ " " +asignacion+"<lista_float>;");
+                this.crearFlotantes(tipo, asignacion, valor);
+            break;
+            case "double":
+                System.out.println("<declaracion> -> "+tipo+ " " +asignacion+"<lista_double>;");
+                this.crearLargos(tipo, asignacion, valor);
+            break;
+            case "char":
+                System.out.println("<declaracion> -> "+tipo+ " " +asignacion+"<lista_char>;");
+                this.crearCaracteres(tipo, asignacion, valor);
+            break;
+        }
+    }
+    
+    public void crearEnteros(String tipo, String asignacion,String valor){
+        String total = "";
+        
+        for(int i = 0; i<valor.length();i++){
+            asci=(int)valor.charAt(i);
+            if (asci>=48 && asci<=57) { //Checamos si la cadena tiene letras  entre 0 y 9
+                total = total + valor.charAt(i);
+                System.out.println("<declaracion> -> " + tipo + " " + asignacion +" "+ total+"<numeros> <lista_int>;");
+            }else{
+                System.out.println(valor+ " <-ErrorX");
+                System.exit(0);
+            }
+            
+        }
+    }
+    
+    public void crearCaracteres(String tipo, String asignacion, String valor){
+        if(valor.length()<=1){
+            if(asci>=48 && asci<=57){   //Checamos si la cadena tiene numeros entre 0 y 9
+                System.out.println("<declaracion> -> " + tipo + " " + asignacion +" '"+ valor+"'<caracteres> <lista_char>;");
+            }
+            else if (asci>=65 && asci<=90) { //Checamos si la cadena tiene letras  entre A y Z
+                System.out.println("<declaracion> -> " + tipo + " " + asignacion +" '"+ valor+"'<caracteres> <lista_char>;");
+            }else if(asci>=97 && asci<=122){    //Checamos si la cadena tiene letras  entre a y z
+                System.out.println("<declaracion> -> " + tipo + " " + asignacion +" '"+ valor+"'caracteres> <lista_chat>;");
+            }
+        }else{
+                System.out.println(valor+ " <-ErrorX");
+                System.exit(0);
+            }        
+    }
+    
+    public void crearFlotantes(String tipo, String asignacion, String valor){
+        int contar =0;
+        String cadena = "";
+        for(int i = 0; i<valor.length();i++){
+            asci=(int)valor.charAt(i);
+                if(asci>=48 && asci<=57){//Checamos si la cadena tiene valores entre 0 y 9
+                    cadena = cadena + valor.charAt(i);
+                    System.out.println("<declaracion> -> " + tipo + " " + asignacion +" '"+ cadena+"'<caracteres> <lista_char>;");
+                }
+                else if (asci==46 && contar <1) { //Checamos si la cadena tiene una sola vez un punto decimal
+                    cadena = cadena + valor.charAt(i);
+                    System.out.println("<declaracion> -> " + tipo + " " + asignacion +" '"+ cadena+"'<caracteres> <lista_char>;");
+                    contar++;
+                }else{
+                System.out.println(valor + " <-ErrorX");
+                System.exit(0);
+            } 
+            
+        }
+    }
+    
+    public void crearLargos(String tipo, String asignacion, String valor){
+        int contar =0;
+        String cadena = "";
+        for(int i = 0; i<valor.length();i++){
+            asci=(int)valor.charAt(i);
+                if(asci>=48 && asci<=57){//Checamos si la cadena tiene valores entre 0 y 9
+                    cadena = cadena + valor.charAt(i);
+                    System.out.println("<declaracion> -> " + tipo + " " + asignacion +" '"+ cadena+"'<caracteres> <lista_char>;");
+                }
+                else if (asci==46 && contar <1) { //Checamos si la cadena tiene una sola vez un punto decimal
+                    cadena = cadena + valor.charAt(i);
+                    System.out.println("<declaracion> -> " + tipo + " " + asignacion +" '"+ cadena+"'<caracteres> <lista_char>;");
+                    contar++;
+                }else{
+                System.out.println(valor + " <-ErrorX");
+                System.exit(0);
+            } 
+            
+        }
     }
 }
 
