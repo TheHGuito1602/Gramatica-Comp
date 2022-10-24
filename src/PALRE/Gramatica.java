@@ -28,7 +28,7 @@ public class Gramatica {
         // TODO code application logic here
         String con = "";
  
-        String token1 = "char xm12 ='a';";
+        String token1 = "char xm12 = 'a' ;";
 
        // String token1 = "float _xiu = 2.5a ;";
         //String token1 = "float _xiu = 2.5 ;";
