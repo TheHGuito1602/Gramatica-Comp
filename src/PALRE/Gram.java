@@ -13,7 +13,7 @@ import java.util.LinkedList;
  */
 public class Gram {
     public static void main(String args[]){
-        Gramatica a=new Gramatica();
+        Gramaticaa a=new Gramaticaa();
         a.inicio();
      
 }
