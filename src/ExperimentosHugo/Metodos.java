@@ -6,15 +6,17 @@ package ExperimentosHugo;
 
 /**
  *
- * @author eljug
+ * @author Hugo Prieto Velázquez, C-5
  */
 public class Metodos {
     public void separar(String cadena){
-        int contador = 0;
+        int dim = 0;
+        System.out.println(cadena);
+        String [] nCadena;
+        String concat= "";
         for(int i = 0; i<cadena.length();i++){
-            if(cadena.charAt(i)==' '){
-                contador++;
-            } 
+            
         }
+        System.out.println("Total de espacios: " + dim);
     }
 }
