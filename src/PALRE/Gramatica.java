@@ -24,7 +24,7 @@ public class Gramatica {
     public void inicio() {
         // TODO code application logic here
         String con = "";
-        String token1 = "float _xiu = 2.5a ;";
+        String token1 = "float _xiu = 2.5 ;";
         //int/x/=0/; <- esta es la correcta
         System.out.println("Cadena recibida: " + token1);
         System.out.println("");
