@@ -27,10 +27,22 @@ public class Gramatica {
     public void inicio() {
         // TODO code application logic here
         String con = "";
+<<<<<<< HEAD
  
         String token1 = "char xm12 ='a';";
 
        // String token1 = "float _xiu = 2.5a ;";
+=======
+<<<<<<< HEAD
+        String token1 = "float _xiu = 2.5 ;";
+=======
+<<<<<<< HEAD
+        String token1 = "char xm12 ='a';";
+=======
+        String token1 = "float _xiu = 2.5a ;";
+>>>>>>> 265949df7dd9fe917c1219c2232e57e2d92ef117
+>>>>>>> 805ded3f2316927248ed0b3dbf5009010b2e96f4
+>>>>>>> e71d4a83e86184be87ec5f8b44c75eae1f740b70
         //int/x/=0/; <- esta es la correcta
         System.out.println("Cadena recibida: " + token1);
         System.out.println("");
