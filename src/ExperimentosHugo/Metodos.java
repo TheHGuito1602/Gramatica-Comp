@@ -14,7 +14,7 @@ public class Metodos {
         for(int i = 0; i<cadena.length();i++){
             if(cadena.charAt(i)==' '){
                 contador++;
-            }
+            } 
         }
     }
 }
