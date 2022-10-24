@@ -20,11 +20,22 @@ public class Gramatica {
     Tabla t = new Tabla();
      String v="";
      int asci=0;
+     int =0;
+     int asci2=0;
+     String d="";
     //MANEJO DE SWITCH EN STRING
     public void inicio() {
         // TODO code application logic here
         String con = "";
+<<<<<<< HEAD
         String token1 = "float _xiu = 2.5 ;";
+=======
+<<<<<<< HEAD
+        String token1 = "char xm12 ='a';";
+=======
+        String token1 = "float _xiu = 2.5a ;";
+>>>>>>> 265949df7dd9fe917c1219c2232e57e2d92ef117
+>>>>>>> 805ded3f2316927248ed0b3dbf5009010b2e96f4
         //int/x/=0/; <- esta es la correcta
         System.out.println("Cadena recibida: " + token1);
         System.out.println("");
@@ -46,6 +57,11 @@ public class Gramatica {
 
         this.tipo(token[0]);
         this.id(token[1],token[0]);
+<<<<<<< HEAD
+        //this.inicioAsignacion(token[2],token[0], token[1]);
+        String n="";
+        con=n.concat(token[1]);
+=======
         for(int i = 2; i<=token.length; i++){
             switch (token[i]){
                 case "=":
@@ -74,6 +90,7 @@ public class Gramatica {
         
         //String n="";
         //con=n.concat(token[1]);
+>>>>>>> 265949df7dd9fe917c1219c2232e57e2d92ef117
         //System.out.println(" "+con);
         
         
@@ -149,17 +166,30 @@ public class Gramatica {
 
     public void id(String revisar,String tipo) {
         
+<<<<<<< HEAD
+        //System.out.println("<declaracion>-> "+tipo+" <letra> <resto_id> <inicio_char> <lista_char>");
+=======
         System.out.println("<declaracion> -> "+tipo+" <letra> <resto_id> <inicio_char><lista_char>;");
+>>>>>>> 265949df7dd9fe917c1219c2232e57e2d92ef117
         
         for (int i = 0; i < revisar.length(); i++){ 
             char c = revisar.charAt(i);
             asci=(int)c;
             if ((asci >= 97 || asci > 122)) { //Checamos si la cadena tiene letras  entre a y z
                 v=v+c;
+<<<<<<< HEAD
+                System.out.println("<declaracion>-> "+tipo+ " " +v+"<resto_id> <inicio_char>");
+                
+            }
+            else if(asci==95){ //si hay guiones bajo
+                System.out.println("<declaracion>-> "+tipo+" "+v+"<resto_id> <inicio_char> <lista_char>");
+
+=======
                 System.out.println("<declaracion> -> "+tipo+ " " +v+"<resto_id> <inicio_char>;");
             }
             else if(asci==95){ //si hay guiones bajo
                 System.out.println("<declaracion> -> "+tipo+" _<resto_id> <inicio_char> <lista_char>;");
+>>>>>>> 265949df7dd9fe917c1219c2232e57e2d92ef117
                 v=v+c;
                 System.out.println("<declaracion> -> "+tipo+ " " +v+"<letra> <resto_id> <inicio_char> <lista_char>;");
             }else{
@@ -168,6 +198,8 @@ public class Gramatica {
             }
         }
     }
+<<<<<<< HEAD
+=======
     public void puntoComa(String [] token){
         String fin = "";
         for(int i = 0; i<token.length-1;i++){
@@ -271,7 +303,33 @@ public class Gramatica {
             
         }
     }
+>>>>>>> 265949df7dd9fe917c1219c2232e57e2d92ef117
 }
+    /*
+    public void inicioAsignacion(String r,String tipo,String id){
+        if(r.charAt(0)=='='){
+            
+        
+        for(int i=0;i<r.length();i++){
+            char s=r.charAt(i);
+            asci2=(int)s;
+            if((asci>=49 ||asci2>57)){
+                
+                d=d+s;
+                System.out.println("<declaracion>-> "+tipo+ " " +id+" "+d+" <inicio_char>");
+            }
+        
+    
+            }
+            
+        }else{
+            if(r.charAt(0)==' '){
+                
+    }
+    }
+    }
+}
+    */
 
 /*
         if(con.compareTo(a.tipo())==0|con.compareTo("float")==0){
