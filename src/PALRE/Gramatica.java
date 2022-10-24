@@ -20,11 +20,14 @@ public class Gramatica {
     Tabla t = new Tabla();
      String v="";
      int asci=0;
+     int =0;
+     int asci2=0;
+     String d="";
     //MANEJO DE SWITCH EN STRING
     public void inicio() {
         // TODO code application logic here
         String con = "";
-        String token1 = "char _xiu=0 ;";
+        String token1 = "char xm12 ='a';";
         //int/x/=0/; <- esta es la correcta
         System.out.println("Cadena recibida: " + token1);
         System.out.println("");
@@ -35,7 +38,7 @@ public class Gramatica {
                 //=//Separa en un arreglo las partes
                 //de la cadena en tokens
         for (int i = 0; i < token.length; i++) { //
-            //System.out.println(token[i]);   //Impresion para revisar las
+            System.out.println(token[i]);   //Impresion para revisar las
         } //posiciones del arreglo
 
         //tipo
@@ -46,6 +49,7 @@ public class Gramatica {
 
         this.tipo(token[0]);
         this.id(token[1],token[0]);
+        //this.inicioAsignacion(token[2],token[0], token[1]);
         String n="";
         con=n.concat(token[1]);
         //System.out.println(" "+con);
@@ -124,7 +128,7 @@ public class Gramatica {
 
     public void id(String revisar,String tipo) {
         
-        System.out.println("<declaracion>-> "+tipo+" <letra> <resto_id> <inicio_char><lista_char>");
+        //System.out.println("<declaracion>-> "+tipo+" <letra> <resto_id> <inicio_char> <lista_char>");
         
         for (int i = 0; i < revisar.length(); i++){ 
             char c = revisar.charAt(i);
@@ -132,9 +136,11 @@ public class Gramatica {
             if ((asci >= 97 || asci > 122)) { //Checamos si la cadena tiene letras  entre a y z
                 v=v+c;
                 System.out.println("<declaracion>-> "+tipo+ " " +v+"<resto_id> <inicio_char>");
+                
             }
             else if(asci==95){ //si hay guiones bajo
-                System.out.println("<declaracion>-> "+tipo+"<_resto_id> <inicio_char> <lista_char>");
+                System.out.println("<declaracion>-> "+tipo+" "+v+"<resto_id> <inicio_char> <lista_char>");
+
                 v=v+c;
                 System.out.println("<declaracion>-> "+tipo+ " " +v+"<letra> <resto_id> <inicio_char> <lista_char>");
             }else{
@@ -144,8 +150,32 @@ public class Gramatica {
            
         }
     }
-
 }
+    /*
+    public void inicioAsignacion(String r,String tipo,String id){
+        if(r.charAt(0)=='='){
+            
+        
+        for(int i=0;i<r.length();i++){
+            char s=r.charAt(i);
+            asci2=(int)s;
+            if((asci>=49 ||asci2>57)){
+                
+                d=d+s;
+                System.out.println("<declaracion>-> "+tipo+ " " +id+" "+d+" <inicio_char>");
+            }
+        
+    
+            }
+            
+        }else{
+            if(r.charAt(0)==' '){
+                
+    }
+    }
+    }
+}
+    */
 
 /*
         if(con.compareTo(a.tipo())==0|con.compareTo("float")==0){
