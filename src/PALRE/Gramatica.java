@@ -24,7 +24,7 @@ public class Gramatica {
     public void inicio() {
         // TODO code application logic here
         String con = "";
-        String token1 = "char _xiu=0 ;";
+        String token1 = "char _xiu a ;";
         //int/x/=0/; <- esta es la correcta
         System.out.println("Cadena recibida: " + token1);
         System.out.println("");
@@ -35,9 +35,9 @@ public class Gramatica {
                 //=//Separa en un arreglo las partes
                 //de la cadena en tokens
         for (int i = 0; i < token.length; i++) { //
-            //System.out.println(token[i]);   //Impresion para revisar las
+            System.out.println(token[i]);   //Impresion para revisar las
         } //posiciones del arreglo
-
+        
         //tipo
         //id
         //inicializacion
@@ -46,8 +46,33 @@ public class Gramatica {
 
         this.tipo(token[0]);
         this.id(token[1],token[0]);
-        String n="";
-        con=n.concat(token[1]);
+        for(int i = 2; i<=token.length; i++){
+            switch (token[i]){
+                case "=":
+                    //Prioridad
+                break;
+                case ",":
+                    //Repetir
+                break;
+                case ";":
+                    this.puntoComa(token);
+                break;
+                default:
+                    System.out.println("Error");
+                    System.exit(0);
+                break;
+        }
+        }
+        
+        //if(token[2] != "=" || token[2] != ","||token[2] != ";" ){
+        //    System.out.println("Error");
+        //    System.exit(0);
+        //}
+        
+        
+        
+        //String n="";
+        //con=n.concat(token[1]);
         //System.out.println(" "+con);
         
         
@@ -61,20 +86,19 @@ public class Gramatica {
 
         switch (revisar) {
             case "int":
-                System.out.println("<tipo>-> " + revisar + "<id><inicio_int>;");
+                System.out.println("<tipo> -> " + revisar + "<id><inicio_int>;");
                 break;
             case "float":
-                System.out.println("<declaracion>-> " + revisar + "<id><inicio_float>;");
+                System.out.println("<declaracion> -> " + revisar + "<id><inicio_float>;");
                 break;
             case "char":
-                System.out.println("<declaracion>-> " + revisar + "<id><inicio_char>;");
-                
+                System.out.println("<declaracion> -> " + revisar + "<id><inicio_char>;");
                 break;
             case "double":
-                System.out.println("<declaracion>-> " + revisar + "<id><inicio_double>;");
+                System.out.println("<declaracion> -> " + revisar + "<id><inicio_double>;");
                 break;
             default:
-                System.out.println("<declaracion>->" + revisar + ";");
+                System.out.println("<declaracion> ->" + revisar + ";");
                 System.out.println(" Error");
                 break;
         }
@@ -124,27 +148,33 @@ public class Gramatica {
 
     public void id(String revisar,String tipo) {
         
-        System.out.println("<declaracion>-> "+tipo+" <letra> <resto_id> <inicio_char><lista_char>");
+        System.out.println("<declaracion> -> "+tipo+" <letra> <resto_id> <inicio_char><lista_char>;");
         
         for (int i = 0; i < revisar.length(); i++){ 
             char c = revisar.charAt(i);
             asci=(int)c;
             if ((asci >= 97 || asci > 122)) { //Checamos si la cadena tiene letras  entre a y z
                 v=v+c;
-                System.out.println("<declaracion>-> "+tipo+ " " +v+"<resto_id> <inicio_char>");
+                System.out.println("<declaracion> -> "+tipo+ " " +v+"<resto_id> <inicio_char>;");
             }
             else if(asci==95){ //si hay guiones bajo
-                System.out.println("<declaracion>-> "+tipo+"<_resto_id> <inicio_char> <lista_char>");
+                System.out.println("<declaracion> -> "+tipo+" _<resto_id> <inicio_char> <lista_char>;");
                 v=v+c;
-                System.out.println("<declaracion>-> "+tipo+ " " +v+"<letra> <resto_id> <inicio_char> <lista_char>");
+                System.out.println("<declaracion> -> "+tipo+ " " +v+"<letra> <resto_id> <inicio_char> <lista_char>;");
             }else{
                 //si no hay esas condiciones se da break
                 break;
             }
-           
         }
     }
-
+    public void puntoComa(String [] token){
+        String fin = "";
+        for(int i = 0; i<token.length-1;i++){
+            fin = fin+token[i]+" ";
+        }
+        System.out.println("<declaracion> -> " + fin + ";");
+        System.exit(0);
+    }
 }
 
 /*
