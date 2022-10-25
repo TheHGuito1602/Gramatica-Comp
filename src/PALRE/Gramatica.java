@@ -36,7 +36,8 @@ public class Gramatica {
         // TODO code application logic here
         String con = "";
 
-        String token1 = "double x , y5 0 ;";
+        String token1="float yu = 12 , xu = 1.e12 , y ;";
+        //String token1 = "double x , y5 0 ;";
 
         // String token1 = "float _xiu = 2.5a ;";
         //String token1 = "float _xiu = 2.5 ;";
@@ -81,6 +82,7 @@ public class Gramatica {
                     break;
                 case ",":
                     this.crearLista(con, token[i+1]);
+                    //this.asignar(token[0], token[i], token[i + 1], token[i - 1]);
                     i++;
                     //Repetir
                     break;
@@ -167,14 +169,20 @@ public class Gramatica {
             }
      */
     public void id(String revisar, String tipo) {
-
+        
         //System.out.println("<declaracion>-> "+tipo+" <letra> <resto_id> <inicio_char> <lista_char>");
         System.out.println("<declaracion> -> " + tipo + " <letra> <resto_id> <inicio_char><lista_char>;");
-
         for (int i = 0; i < revisar.length(); i++) {
             char c = revisar.charAt(i);
+            int contarNumero=0;
             asci = (int) c;
-            if ((asci >= 97 || asci > 122)) { //Checamos si la cadena tiene letras  entre a y z
+           
+            if(revisar.charAt(0)=='1'||revisar.charAt(0)=='2'||revisar.charAt(0)=='3'||revisar.charAt(0)=='4'||revisar.charAt(0)=='5'||revisar.charAt(0)=='6'||revisar.charAt(0)=='7'||revisar.charAt(0)=='8'||revisar.charAt(0)=='9'||revisar.charAt(0)=='0'){
+                contarNumero++;
+                System.exit(0);
+               
+            }else{
+            if ((asci >= 97 || asci > 122)||asci>=48 && asci <= 57) { //Checamos si la cadena tiene letras  entre a y z
                 v = v + c;
                 System.out.println("<declaracion>-> " + tipo + " " + v + "<resto_id> <inicio_char>");
 
@@ -183,8 +191,10 @@ public class Gramatica {
                 v = v + c;
                 System.out.println("<declaracion> -> " + tipo + " " + v + "<letra> <resto_id> <inicio_char> <lista_char>;");
             } else {
+      
                 //si no hay esas condiciones se da break
                 break;
+            }
             }
         }
     }
@@ -201,7 +211,7 @@ public class Gramatica {
     public void asignar(String tipo, String asignacion, String valor, String id) {
         switch (tipo) {
             case "int":
-                System.out.println("<declaracion> -> " + tipo + " " + asignacion + "<lista_int>;");
+                System.out.println("<declaracion> -> " + tipo + " "+id+ " " + asignacion +";");
                 this.crearEnteros(tipo, asignacion, valor, id);
                 break;
             case "float":
@@ -236,7 +246,6 @@ public class Gramatica {
                     System.out.println(valor + " <-ErrorX");
                     System.exit(0);
                 }
-
             }
         }
     }
@@ -314,23 +323,31 @@ public class Gramatica {
     }
     public void crearLista(String declaracion,String revisar){
         
-        //System.out.println("<declaracion>-> "+tipo+" <letra> <resto_id> <inicio_char> <lista_char>");
-        System.out.println("<declaracion> -> " + declaracion+"<lista>;");
-
+       //System.out.println("<declaracion>-> "+tipo+" <letra> <resto_id> <inicio_char> <lista_char>");
+        System.out.println("<declaracion> -> " + declaracion + " <letra> <resto_id> <inicio_char><lista_char>;");
         for (int i = 0; i < revisar.length(); i++) {
             char c = revisar.charAt(i);
+            int contarNumero=0;
             asci = (int) c;
-            if ((asci >= 97 || asci > 122)) { //Checamos si la cadena tiene letras  entre a y z
+           
+            if(revisar.charAt(0)=='1'||revisar.charAt(0)=='2'||revisar.charAt(0)=='3'||revisar.charAt(0)=='4'||revisar.charAt(0)=='5'||revisar.charAt(0)=='6'||revisar.charAt(0)=='7'||revisar.charAt(0)=='8'||revisar.charAt(0)=='9'||revisar.charAt(0)=='0'){
+                contarNumero++;
+                System.exit(0);
+               
+            }else{
+            if ((asci >= 97 || asci > 122)||asci>=48 && asci <= 57) { //Checamos si la cadena tiene letras  entre a y z
                 v = v + c;
                 System.out.println("<declaracion>-> " + declaracion + " " + v + "<resto_id> <inicio_char>");
 
             } else if (asci == 95) { //si hay guiones bajo
-                System.out.println("<declaracion> -> " + declaracion + " _<resto_id> <inicio_char> <lista_char>;");
+                System.out.println("<declaracion> -> " + declaracion+ " _<resto_id> <inicio_char> <lista_char>;"); 
                 v = v + c;
-                System.out.println("<declaracion> -> " + declaracion + " " + v + "<letra> <resto_id> <inicio_char> <lista_char>;");
+                System.out.println("<declaracion> -> " + declaracion + " " + v + " <lista_char>;");
             } else {
+      
                 //si no hay esas condiciones se da break
                 break;
+            }
             }
         }
 }
