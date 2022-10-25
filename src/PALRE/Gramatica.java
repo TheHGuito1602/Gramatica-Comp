@@ -285,7 +285,7 @@ public class Gramatica {
             } 
             
         }
-        System.out.println("hoola");
+        System.out.println("hoola hugo");
     }
 }
     /*
