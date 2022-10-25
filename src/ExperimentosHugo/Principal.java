@@ -11,7 +11,7 @@ package ExperimentosHugo;
 public class Principal {
     public static void main(String [] args){
         Metodos m = new Metodos();
-        String cadena = "int x,x;";   //int/x/,/x/,/x/;
+        String cadena = "int x,x, x, y = 0, v;";         //int/x/,/x/,/x/;
                                             //, para listas
         m.separar(cadena);                  //; simbolo terminar
                                             //= asignacion

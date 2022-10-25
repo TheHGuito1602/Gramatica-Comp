@@ -10,12 +10,17 @@ package ExperimentosHugo;
  */
 public class Metodos {
     public void separar(String cadena){
-        int dim = 0;
+        int dim = 2;
         System.out.println(cadena);
-        String [] nCadena;
-        String concat= "";
+        
         for(int i = 0; i<cadena.length();i++){
-            
+            if(cadena.charAt(i)==';'||
+                cadena.charAt(i)=='='
+                ){
+                dim++;
+            }else if(cadena.charAt(i)==','){
+                dim=dim+2;
+            }
         }
         System.out.println("Total de espacios: " + dim);
     }
