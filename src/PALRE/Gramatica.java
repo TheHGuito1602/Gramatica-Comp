@@ -35,7 +35,7 @@ public class Gramatica {
         // TODO code application logic here
         String con = "";
 
-        String token1 = "double yu = 12 , xu = 1.2e12 , y ;";
+        String token1 = "double xu = 1.e212 ;";
         //String token1 = "double x , y5 0 ;";
 
         // String token1 = "float _xiu = 2.5a ;";
@@ -357,7 +357,6 @@ public class Gramatica {
                     break;
                 }
             }
-            
         }
     }
 }
