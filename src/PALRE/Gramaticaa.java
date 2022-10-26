@@ -19,7 +19,7 @@ public class Gramaticaa {
 
     /**
      *
-     * @author Edgar Gutierrez
+     * @author Edgar Gutierrez y Hugo Prieto Velázquez, C-5
      */
     /**
      * @param args the command line arguments

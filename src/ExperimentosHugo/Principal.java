@@ -6,7 +6,7 @@ package ExperimentosHugo;
 
 /**
  *
- * @author eljug
+ * @author Hugo Prieto Velázquez, C-5
  */
 public class Principal {
     public static void main(String [] args){
