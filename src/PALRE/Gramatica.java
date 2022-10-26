@@ -357,6 +357,7 @@ public class Gramatica {
                     break;
                 }
             }
+            
         }
     }
 }
