@@ -34,8 +34,8 @@ public class Gramatica {
     public void inicio() {
         // TODO code application logic here
         String con = "";
-
-        String token1 = "double xu = 1.e212 ;";
+          String token1= "int x , x ;";
+        //String token1 = "float xu = 1 , xu = 1.21 ;";
         //String token1 = "double x , y5 0 ;";
 
         // String token1 = "float _xiu = 2.5a ;";
@@ -69,7 +69,7 @@ public class Gramatica {
         con = con + token[1] + n;
         con = con + token[2] + n;
         con = con + token[3] + n;
-        System.out.println("Mi cadena " + con);
+        //System.out.println("Mi cadena " + con);
 
         //int x = 0, y = 1;
         for (int i = 2; i <= token.length; i++) {
