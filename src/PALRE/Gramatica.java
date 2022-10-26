@@ -248,6 +248,7 @@ public class Gramatica {
                 }
             }
         }
+        
     }
 
     public void crearCaracteres(String tipo, String asignacion, String valor, String id) {
