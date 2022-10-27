@@ -34,7 +34,7 @@ public class Gramatica {
     public void inicio() {
         // TODO code application logic here
         String con = "";
-        String token1 = "char _1_x = a ;";
+        String token1 = "char _1_x = '9' ;";
         //String token1 = "float xu = 1 , xu = 1.21 ;";
         //String token1 = "double x , y5 0 ;";
 
@@ -269,12 +269,13 @@ public class Gramatica {
     }
 
     public void crearCaracteres(String tipo, String asignacion, String valor, String id) {
-        if (valor.length() <= 1) {
-            if (asci >= 48 && asci <= 57) {   //Checamos si la cadena tiene numeros entre 0 y 9
+        //char, =, 'a', nombre de variable
+        if (valor.length() == 3){
+            if (asci >= 48 && asci <= 57 && valor.charAt(0)==39 &&valor.charAt(2)==39) {   //Checamos si la cadena tiene numeros entre 0 y 9
                 System.out.println("<declaracion> -> " + tipo + " " + id + " " + asignacion + " '" + valor + "'<caracteres> <lista_char>;");
-            } else if (asci >= 65 && asci <= 90) { //Checamos si la cadena tiene letras  entre A y Z
+            } else if (asci >= 65 && asci <= 90&& valor.charAt(0)==39 &&valor.charAt(2)==39) { //Checamos si la cadena tiene letras  entre A y Z
                 System.out.println("<declaracion> -> " + tipo + " " + id + " " + asignacion + " '" + valor + "'<caracteres> <lista_char>;");
-            } else if (asci >= 97 && asci <= 122) {    //Checamos si la cadena tiene letras  entre a y z
+            } else if (asci >= 97 && asci <= 122&& valor.charAt(0)==39 &&valor.charAt(2)==39) {    //Checamos si la cadena tiene letras  entre a y z
                 System.out.println("<declaracion> -> " + tipo + " " + id + " " + asignacion + " '" + valor + "'caracteres> <lista_chat>;");
             }
         } else {
