@@ -36,12 +36,12 @@ public class Gramatica {
         // TODO code application logic here
         String con = "";
         //String token1= JOptionPane.showInputDialog("Ingrese declaracion");
-        //String token1="int x = 0 ;";
+        // String token1="int nombre = -121234aa5 ;";
         //String token1 = "char _1_X = 'a' , _123YU = '1' , _34erru = 'z' , _1uWuntu = '0' ;";
-        //String token1 = "float xu = 1 , xu = 1.21 ;";
-       String token1 = "double x__q = 1.00 , yIU , z = +1.E-1 ;";
+        //String token1 = "float xu = 1a , xu = 1.21 ;";
+         String token1 = "double x__q = 1.00 , yIU , z = +1.E-1 ;";
 
-        // String token1 = "float _xiu = 2.5a ;";
+         //String token1 = "float _xiu = 2.5 ;";
         //String token1 = "float _xiu = 2.5 ;";
         //String token1 = "char xm12 = 'a' ;";
         // String token1 = "float _xiu = 2.5a ;";
@@ -54,8 +54,9 @@ public class Gramatica {
         token = token1.split(" ");
         //=//Separa en un arreglo las partes
         //de la cadena en tokens
+        
         for (int i = 0; i < token.length; i++) { //
-            System.out.println(token[i]);   //Impresion para revisar las
+            //System.out.println(token[i]);   //Impresion para revisar las
         } //posiciones del arreglo
 
         //tipo
@@ -199,7 +200,7 @@ public class Gramatica {
                 if ((asci >= 97 && asci <= 122) || (asci >= 65 && asci <= 90)) { //Checamos si la cadena tiene letras  entre a y z o existe un numero 
                     System.out.println("<declaracion> -> " + tipo + " " + v + "<letra> <resto_id> <inicio_" + tipo + "> <lista_" + tipo + ">;");
                     v = v + c;
-                    System.out.println("<declaracion> -> " + tipo + " " + v + " <resto_id> <inicio_" + tipo + "> <lista_" + tipo + ">;");
+                    System.out.println("<declaracion> -> " + tipo + " " + v + "<resto_id> <inicio_" + tipo + "> <lista_" + tipo + ">;");
 
                 } else if (asci == 95) { //si hay guiones bajo
                     System.out.println("<declaracion> -> " + tipo + " " + v + "<resto_id> <inicio_" + tipo + "> <lista_" + tipo + ">;");
@@ -341,7 +342,7 @@ public class Gramatica {
                         System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + "<digito> <resto_digito> <punto> <resto_digito> <lista_" + tipo + ">;");
                         cadena = cadena + valor.charAt(i);
                         System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + "<resto_digito> <punto> <resto_digito> <lista_" + tipo + ">;");
-                    } else if (asci == 46 && contar < 1) { //Checamos si la cadena tiene una sola vez un punto decimal
+                    } else if (asci == 46 && contar < 1 || asci>= 97 && asci<=122) { //Checamos si la cadena tiene una sola vez un punto decimal
                         System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + "<resto_digito> <punto> <lista_" + tipo + ">;");
                         cadena = cadena + valor.charAt(i);
                         System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + " <resto_digito> <lista_" + tipo + ">;");
@@ -351,6 +352,10 @@ public class Gramatica {
                         System.exit(0);
                     }
                 }
+                if((asci >= 97 && asci <= 122) || (asci >= 65 && asci <= 90)){
+                    System.out.println(valor + " <-ErrorEnCrearFlotantes");
+                System.exit(0);
+            }
 
             }
 
@@ -376,14 +381,14 @@ public class Gramatica {
                     System.exit(0);
                 } else {
                     if (valor.charAt(i) == '+' || valor.charAt(i) == '-') {
-                        System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + "<signo> <entero_digito> <lista_" + tipo + ">;");
+                        System.out.println("<declaracion> -> " + con + "" + asignacion + "" + cadena + "<signo> <entero_digito> <lista_" + tipo + ">;");
                         cadena = cadena + valor.charAt(i);
-                        System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + "<entero_digito> <lista_" + tipo + ">;");
+                        System.out.println("<declaracion> -> " + con + "" + asignacion + "" + cadena + "<entero_digito> <lista_" + tipo + ">;");
                     }
                     if (asci >= 48 && asci <= 57) {//Checamos si la cadena tiene valores entre 0 y 9
-                        System.out.println("<declaracion> -> " + con + " "+ asignacion +" "+ cadena +"<digito> <resto_digito>  <resto_digito> <lista_" + tipo + ">;");
+                        System.out.println("<declaracion> -> " + con + ""+ asignacion +""+ cadena +"<digito> <resto_digito>  <resto_digito> <lista_" + tipo + ">;");
                         cadena = cadena + valor.charAt(i);
-                        System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + "<resto_digito>  <resto_digito> <lista_" + tipo + ">;");
+                        System.out.println("<declaracion> -> " + con + "" + asignacion + "" + cadena + "<resto_digito>  <resto_digito> <lista_" + tipo + ">;");
                     }
                 }
             } else {
@@ -392,7 +397,7 @@ public class Gramatica {
                     System.out.println("<declaracion> -> " + con + "=<entero_signo> <punto> <entero_digito> <exponencial> <entero_signo> <lista_" + tipo + ">;");
                     System.out.println("<declaracion> -> " + con + "=<signo> <entero_digito> <punto> <entero_digito> <exponencial> <entero_signo> <lista_" + tipo + ">;");
                     cadena = cadena + valor.charAt(i);
-                    System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + "<entero_digito> <punto> <entero_digito> <exponencial> <entero_signo> <lista_" + tipo + ">;");
+                    System.out.println("<declaracion> -> " + con + "" + asignacion + "" + cadena + "<entero_digito> <punto> <entero_digito> <exponencial> <entero_signo> <lista_" + tipo + ">;");
                     contarSigno++;
                 } else {
                     if (asci >= 48 && asci <= 57) {//Checamos si la cadena tiene valores entre 0 y 9
@@ -400,20 +405,24 @@ public class Gramatica {
                         cadena = cadena + valor.charAt(i);
                         System.out.println("<declaracion> -> " + con + "" + asignacion + "" + cadena + "<resto_digito> <punto> <resto_digito> <exponencial> <entero_signo> <lista_" + tipo + ">;");
                     } else if (asci == 46 && contarP < 1) { //Checamos si la cadena tiene una sola vez un punto decimal
-                        System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + "<resto_digito> <punto> <resto_digito> <exponencial> <entero_signo> <lista_" + tipo + ">;");
+                        System.out.println("<declaracion> -> " + con + "" + asignacion + "" + cadena + "<resto_digito> <punto> <resto_digito> <exponencial> <entero_signo> <lista_" + tipo + ">;");
                         cadena = cadena + valor.charAt(i);
-                        System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + "<resto_digito> <exponencial> <entero_signo> <lista_" + tipo + ">;");
+                        System.out.println("<declaracion> -> " + con + "" + asignacion + "" + cadena + "<resto_digito> <exponencial> <entero_signo> <lista_" + tipo + ">;");
                         contarP++;
                     } else if (asci == 69 && contarE < 1 && contarP == 1 || asci == 101 && contarE < 1 && contarP == 1) {
-                        System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + "<exponencial> <entero_signo> <lista_" + tipo + ">;");
+                        System.out.println("<declaracion> -> " + con + "" + asignacion + "" + cadena + "<exponencial> <entero_signo> <lista_" + tipo + ">;");
                         cadena = cadena + valor.charAt(i);
-                        System.out.println("<declaracion> -> " + con + " " + asignacion + " " + cadena + "<entero_signo> <lista_" + tipo + ">;");
+                        System.out.println("<declaracion> -> " + con + "" + asignacion + "" + cadena + "<entero_signo> <lista_" + tipo + ">;");
                         contarE++;
                     } else {
                         System.out.println(valor + " <-ErrorEnCrearLargos");
                         System.exit(0);
                     }
                 }
+                        if((asci >= 97 && asci <= 122) || (asci >= 65 && asci <= 90)){
+                    System.out.println(cadena + " <-ErrorEnCrearFlotantes");
+                System.exit(0);
+                        }
 
             }
 
