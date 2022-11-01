@@ -30,34 +30,39 @@ public class Gramatica {
     // int =0;
     int asci2 = 0;
     String d = "";
-
+    Errores ed = new Errores();
+    Metodos a= new Metodos();
     //MANEJO DE SWITCH EN STRING
     public void inicio() {
         // TODO code application logic here
         String con = "";
+        String []tokenD;
+        
+        String tokenS;
         //String token1= JOptionPane.showInputDialog("Ingrese declaracion");
         // String token1="int nombre = -121234aa5 ;";
         //String token1 = "char _1_X = 'a' , _123YU = '1' , _34erru = 'z' , _1uWuntu = '0' ;";
         //String token1 = "float xu = 1a , xu = 1.21 ;";
-         String token1 = "double x__q = 1.00 , yIU , z = +1.E-1 ;";
+         //String token1 = "double x__q = 1.00 , yIU , z = +1.E-1 ;";
 
          //String token1 = "float _xiu = 2.5 ;";
         //String token1 = "float _xiu = 2.5 ;";
         //String token1 = "char xm12 = 'a' ;";
         // String token1 = "float _xiu = 2.5a ;";
         //int/x/=0/; <- esta es la correcta
-        System.out.println("Cadena recibida: " + token1);
-        System.out.println("");
+        tokenS=ed.errorTD();
+         System.out.println("Cadena recibida: " + tokenS+"\n");
+        //System.out.println("");
         System.out.println("<variable>-><declaracion>");
-        int dim = this.separar(token1);
-        String[] token = new String[dim];
-        token = token1.split(" ");
+        int dim = a.separar(tokenS);
+        tokenD = new String[dim];
+        tokenD = tokenS.split(" ");
         //=//Separa en un arreglo las partes
         //de la cadena en tokens
         
-        for (int i = 0; i < token.length; i++) { //
+        //for (int i = 0; i < token.length; i++) { //
             //System.out.println(token[i]);   //Impresion para revisar las
-        } //posiciones del arreglo
+        //} //posiciones del arreglo
 
         //tipo
         //id
@@ -65,23 +70,25 @@ public class Gramatica {
         //lista 
         //;
         String n = " ";
-        this.tipo(token[0]);
-        con = token[0] + n;
-        this.id(token[1], token[0]);
-        con = con + token[1] + n;
+        this.tipo(tokenD[0]);
+        con = tokenD[0] + n;
+        
+        System.out.println(tokenD[1]);
+        this.id(tokenD[1], tokenD[0]);
+        con = con + tokenD[1] + n;
         //this.inicioAsignacion(token[2],token[0], token[1]);
 
         // con = con + token[2] + n;
         // con = con + token[3] + n;
         //System.out.println("Mi cadena " + con);
         //int x = 0, y = 1;
-        for (int i = 2; i <= token.length; i++) {
-            switch (token[i]) {
+        for (int i = 2; i <= tokenD.length; i++) {
+            switch (tokenD[i]) {
                 case "=":
                     //System.out.println(con + "<- Esto se lleva hasta");
 
-                    this.asignar(token[0], token[i], token[i + 1], token[i - 1], con);
-                    con = con + token[i] + token[i + 1] + n;
+                    this.asignar(tokenD[0], tokenD[i], tokenD[i + 1], tokenD[i - 1], con);
+                    con = con + tokenD[i] + tokenD[i + 1] + n;
                     //System.out.println(" "+con);
                     i++;
                     break;
@@ -90,18 +97,18 @@ public class Gramatica {
                     //System.out.println("<declracion> -> " + token[0] + " "+token[i-1]+" <lista_"+token[0]+">;");
 
                     //System.out.println(con + "<- Esto se lleva antes en ->"+ i);
-                    this.crearLista(con, token[i + 1], token[0]);
+                    this.crearLista(con, tokenD[i + 1], tokenD[0]);
                     //this.asignar(token[0], token[i], token[i + 1], token[i - 1]);
-                    con = con + token[i] + token[i + 1] + n;
+                    con = con + tokenD[i] + tokenD[i + 1] + n;
                     //  System.out.println(con + "<- Esto se lleva hasta el momento");
                     i++;
                     //Repetir
                     break;
                 case ";":
-                    if (i == (token.length - 1)) {
-                        this.puntoComa(token);
+                    if (i == (tokenD.length - 1)) {
+                        this.puntoComa(tokenD);
                     } else {
-                        System.out.println(token[i] + " <-Error de final");
+                        System.out.println(tokenD[i] + " <-Error de final");
                         System.exit(0);
                     }
                     break;
@@ -137,8 +144,8 @@ public class Gramatica {
                 System.out.println("<declaracion> -> " + revisar + "<id> <inicio_double> <lista_double>;");
                 break;
             default:
-                System.out.println("<declaracion> -> " + revisar + ";");
-                System.out.println(" Error de Tipo de Dato");
+                System.out.println("<declaracion> -> ");
+                System.out.println(revisar+"<- Error de Tipo de Dato");
                 break;
         }
         /*
@@ -161,16 +168,7 @@ public class Gramatica {
 
     }
 
-    public int separar(String cadena) {
-        int contador = 0;
-        for (int i = 0; i < cadena.length(); i++) {
-            if (cadena.charAt(i) != ' ') {
-                contador++;
-            }
-        }
 
-        return contador;
-    }
 
     /*
             public void id(String revisar,String token){

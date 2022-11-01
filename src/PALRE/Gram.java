@@ -13,8 +13,9 @@ import java.util.LinkedList;
  */
 public class Gram {
     public static void main(String args[]){
-        Gramatica a=new Gramatica();
-        a.inicio();
-     
+        Errores a=new Errores();
+       //Gramatica g = new Gramatica();
+       // System.out.println(a.errorTD());
+        a.errorTD();
 }
 }
