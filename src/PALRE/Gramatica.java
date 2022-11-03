@@ -27,7 +27,6 @@ public class Gramatica {
     Tabla t = new Tabla();
     String v = "";
     int asci = 0;
-    // int =0;
     int asci2 = 0;
     String d = "";
 
@@ -35,60 +34,35 @@ public class Gramatica {
     public void inicio() {
         // TODO code application logic here
         String con = "";
-        //String token1= JOptionPane.showInputDialog("Ingrese declaracion");
-        // String token1="int nombre = -121234aa5 ;";
-        //String token1 = "char _1_X = 'a' , _123YU = '1' , _34erru = 'z' , _1uWuntu = '0' ;";
-        //String token1 = "float xu = 1a , xu = 1.21 ;";
-         String token1 = "double x__q = 1.00 , yIU , z = +1.E-1 ;";
-
-         //String token1 = "float _xiu = 2.5 ;";
-        //String token1 = "float _xiu = 2.5 ;";
-        //String token1 = "char xm12 = 'a' ;";
-        // String token1 = "float _xiu = 2.5a ;";
-        //int/x/=0/; <- esta es la correcta
+        try{
+        String token1= JOptionPane.showInputDialog("Ingrese declaracion");
         System.out.println("Cadena recibida: " + token1);
         System.out.println("");
         System.out.println("<variable>-><declaracion>");
         int dim = this.separar(token1);
         String[] token = new String[dim];
         token = token1.split(" ");
-        //=//Separa en un arreglo las partes
-        //de la cadena en tokens
         
-        for (int i = 0; i < token.length; i++) { //
+       // for (int i = 0; i < token.length; i++) { //
             //System.out.println(token[i]);   //Impresion para revisar las
-        } //posiciones del arreglo
+        //} //posiciones del arreglo
 
-        //tipo
-        //id
-        //inicializacion
-        //lista 
-        //;
         String n = " ";
         this.tipo(token[0]);
         con = token[0] + n;
         this.id(token[1], token[0]);
         con = con + token[1] + n;
-        //this.inicioAsignacion(token[2],token[0], token[1]);
-
-        // con = con + token[2] + n;
-        // con = con + token[3] + n;
-        //System.out.println("Mi cadena " + con);
-        //int x = 0, y = 1;
+        
         for (int i = 2; i <= token.length; i++) {
             switch (token[i]) {
                 case "=":
                     //System.out.println(con + "<- Esto se lleva hasta");
-
                     this.asignar(token[0], token[i], token[i + 1], token[i - 1], con);
                     con = con + token[i] + token[i + 1] + n;
                     //System.out.println(" "+con);
                     i++;
                     break;
                 case ",":
-                    // System.out.println("<declracion> -> " + token[0] + " "+token[i-1]+" <inicio_"+token[0]+"> <lista_"+token[0]+">;");
-                    //System.out.println("<declracion> -> " + token[0] + " "+token[i-1]+" <lista_"+token[0]+">;");
-
                     //System.out.println(con + "<- Esto se lleva antes en ->"+ i);
                     this.crearLista(con, token[i + 1], token[0]);
                     //this.asignar(token[0], token[i], token[i + 1], token[i - 1]);
@@ -111,14 +85,11 @@ public class Gramatica {
                     break;
             }
         }
-
-        //if(token[2] != "=" || token[2] != ","||token[2] != ";" ){
-        //    System.out.println("Error");
-        //    System.exit(0);
-        //}
-        //String n="";
-        //con=n.concat(token[1]);
-        //System.out.println(" "+con);
+        }catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("Hubo un Error en tu declaracion");
+        }
+        
+        
     }
 
     public void tipo(String revisar) {
@@ -141,23 +112,6 @@ public class Gramatica {
                 System.out.println(" Error de Tipo de Dato");
                 break;
         }
-        /*
-                if(i.compareTo(revisar)==0){
-                    System.out.println("<tipo>-> "+revisar+"<id><inicio_int>;");
-                    
-                }
-                if(f.compareTo(revisar)==0){
-                    System.out.println("<declaracion>-> "+revisar+"<id><inicio_float>;");
-                    
-                }
-                if(d.compareTo(revisar)==0){
-                    System.out.println("<declaracion>-> "+revisar+"<id><inicio_double>;");                
-                }
-                
-                if(c.compareTo(revisar)==0){
-                    System.out.println("<declaracion>-> "+revisar+"<id><inicio_char>;");                
-
-                }*/
 
     }
 
@@ -172,17 +126,6 @@ public class Gramatica {
         return contador;
     }
 
-    /*
-            public void id(String revisar,String token){
-                //System.out.println("<declaracion>-> "+token+);
-                for(int i=1;i<revisar.length();i++){
-                    if(revisar.charAt(i)=='_'||revisar.charAt(i)=='l'){
-                      System.out.println("<declaracion>-> "+token+" "+revisar.charAt(i)+"<inicio_char> ;");
-                    }
-                }
-                
-            }
-     */
     public void id(String revisar, String tipo) {
 
         //System.out.println("<declaracion>-> "+tipo+" <letra> <resto_id> <inicio_char> <lista_char>");
@@ -427,30 +370,7 @@ public class Gramatica {
             }
 
         }
-        /*
-        for (int i = 0; i < valor.length(); i++) {
-            asci = (int) valor.charAt(i);
-            if (asci == 45 && contarSigno < 1 || asci == 43 && contarSigno < 1) {
-                cadena = cadena + valor.charAt(i);
-                System.out.println("<declaracion> -> " + tipo + " " + id + " " + asignacion + " " + cadena + "<caracteres> <lista_char>;");
-            } else {
-                if (asci >= 48 && asci <= 57) {//Checamos si la cadena tiene valores entre 0 y 9
-                    cadena = cadena + valor.charAt(i);
-                    System.out.println("<declaracion> -> " + tipo + " " + id + " " + asignacion + " " + cadena + "<caracteres> <lista_char>;");
-                } else if (asci == 46 && contar < 1) { //Checamos si la cadena tiene una sola vez un punto decimal
-                    cadena = cadena + valor.charAt(i);
-                    System.out.println("<declaracion> -> " + tipo + " " + id + " " + asignacion + " " + cadena + "<caracteres> <lista_char>;");
-                    contar++;
-                } else if (asci == 69 && contarE < 1 && contar == 1 || asci == 101 && contarE < 1 && contar == 1) {
-                    cadena = cadena + valor.charAt(i);
-                    System.out.println("<declaracion> -> " + tipo + " " + id + " " + asignacion + " " + cadena + "<caracteres> <lista_char>;");
-                    contarE++;
-                } else {
-                    System.out.println(valor + " <-ErrorX");
-                    System.exit(0);
-                }
-            }
-        }*/
+       
 
     }
 
@@ -494,44 +414,3 @@ public class Gramatica {
         }
     }
 }
-
-/*
-    public void inicioAsignacion(String r,String tipo,String id){
-        if(r.charAt(0)=='='){
-            
-        
-        for(int i=0;i<r.length();i++){
-            char s=r.charAt(i);
-            asci2=(int)s;
-            if((asci>=49 ||asci2>57)){
-                
-                d=d+s;
-                System.out.println("<declaracion>-> "+tipo+ " " +id+" "+d+" <inicio_char>");
-            }
-        
-    
-            }
-            
-        }else{
-            if(r.charAt(0)==' '){
-                
-    }
-    }
-    }
-}
-sout    dbvfbfbfbfbf
- */
-
- /*
-        if(con.compareTo(a.tipo())==0|con.compareTo("float")==0){
-                    
-                    System.out.println("tipo->"+con);
-                    if(token.charAt(i)!=' '){
-                        con=con+token.charAt(i);
-                        if(con.compareTo("x")==0){
-                            System.out.println("id-> "+con);
-                        }
-                    }
-                     
-                }
- */
